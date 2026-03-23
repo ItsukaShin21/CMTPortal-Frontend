@@ -1,0 +1,29 @@
+.login-page-container {
+    background: #6367FF;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-form-container {
+    background: #fff;
+    width: 40vw;
+    height: 75vh;
+    border-radius: 15px;
+}
+
+.login-label {
+    font-size: 36px;
+}
+
+.login-input-fields {
+    width: 100%;
+}
+
+.login-input-fields input {
+    font-size: 18px;
+    padding: 10px;
+    background: #8494FF;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
