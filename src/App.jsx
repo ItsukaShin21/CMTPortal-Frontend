@@ -9,7 +9,7 @@ export default function App() {
       path: "/",
       element: <LoginPage />
     },
-  ])
+  ]);
 
   return (
     <RouterProvider router={ router } />
