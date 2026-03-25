@@ -14,7 +14,7 @@ export default function LoginPage() {
                         <p className="login-label fw-bold">LOGIN</p>
                         <input type="email" 
                                placeholder="Email" 
-                               name="Email"/>
+                               name="Email" />
                         <div className="d-flex align-items-center position-relative">
                             <input type={ seePassword } 
                                    placeholder="Password" 
