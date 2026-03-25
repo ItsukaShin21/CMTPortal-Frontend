@@ -1,4 +1,3 @@
-import React from 'react'
 import BackendConnector from "./BackendConnector.jsx"
 
 export default function UserManager() {
@@ -9,10 +8,8 @@ export default function UserManager() {
             email: email,
             password: password
         }).then(response => {
-            if(response.data.token) {
-                backendInstance.defaults.headers.common["Authorization"] = `Bearer ${ response.data.token }`;
-            } else {
-                console.log("Login failed: No token recieved");
+            if (response.data.status == "success") {
+                console.log("Login");
             }
         });
     }

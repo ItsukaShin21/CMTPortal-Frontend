@@ -6,8 +6,8 @@
 
 .login-form-container {
     background: #fff;
-    width: 40vw;
-    height: 75vh;
+    width: 35vw;
+    height: 70vh;
     border-radius: 15px;
 }
 
@@ -27,12 +27,13 @@
     color: #fff;
     border: none;
     border-radius: 15px 15px 15px 15px;
-    width: 30vw;
+    width: 25vw;
+    font-size: 16px;
 }
 
 .login-input-fields input:nth-child(1) {
     border-radius: 15px;
-    width: 30vw;
+    width: 25vw;
 }
 
 .see-password {
@@ -58,7 +59,7 @@
 }
 
 .login-button {
-    width: 20vw;
+    width: 15vw;
     padding: 10px;
     border-radius: 15px;
     border: none;
@@ -66,5 +67,5 @@
 }
 
 .login-p {
-    font-size: 18px;
+    font-size: 14px;
 }
