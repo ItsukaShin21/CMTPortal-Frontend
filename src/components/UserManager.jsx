@@ -1,10 +1,9 @@
-import BackendConnector from "./BackendConnector.jsx"
+import BackendConnector from "./BackendConnector";
 
 export default function UserManager() {
-    const { backendInstance } = BackendConnector();
 
     const userLogin = async (email, password) => {
-        await backendInstance.post("/login", {
+        await BackendConnector.post("/login", {
             email: email,
             password: password
         }).then(response => {

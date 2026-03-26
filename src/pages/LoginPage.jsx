@@ -1,6 +1,5 @@
 import "../css/LoginPage.css"
 import ShowPassword1 from "../assets/images/ShowPassword1.png"
-import ShowPassword2 from "../assets/images/ShowPassword2.png"
 import UserManager from "../components/UserManager"
 import { useState } from "react"
 
