@@ -1,0 +1,57 @@
+.register-page-container {
+    background: #6367FF;
+    height: 100vh;
+    width: 100vw;
+}
+
+.register-form-container {
+    background: #fff;
+    width: 35vw;
+    height: 80vh;
+    border-radius: 15px;
+}
+
+.register-label {
+    font-size: 36px;
+}
+
+.register-form-container input, select {
+    font-size: 18px;
+    padding: 10px 10px 10px 20px;
+    background: #8494FF;
+    color: #fff;
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    width: 25vw;
+    font-size: 16px;
+}
+
+.register-form-container select {
+    width: 25vw;
+}
+
+.register-input-fields {
+    height: 100%;
+}
+
+.see-password {
+    background: #8494FF;
+    padding: 5px;
+    border: none;
+    width: 3vw;
+    border-radius: 15px;
+    right: 5px;
+}
+
+.see-password-active {
+    background: #fff;
+    padding: 5px;
+    border: none;
+    width: 3vw;
+    border-radius: 15px;
+    right: 5px;
+}
+
+.see-password:hover {
+    background: #fff;
+}

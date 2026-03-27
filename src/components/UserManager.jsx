@@ -13,5 +13,15 @@ export default function UserManager() {
         });
     }
 
-    return { userLogin };
+    const userRegister = async (name, email, role, password) => {
+        await BackendConnector.post("/register-user", {
+            name, email, role, password
+        }).then(response => {
+            if (response.data.status == "success") {
+                console.log("registered");
+            }
+        });
+    }
+
+    return { userLogin, userRegister };
 }

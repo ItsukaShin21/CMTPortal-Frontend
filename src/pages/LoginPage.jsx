@@ -55,7 +55,7 @@ export default function LoginPage() {
                             </button>
                         </div>
                         <button type="submit" className="login-button fw-bold">{ loader }</button>
-                        <p className="login-p">Click <a href="/home">Register</a> to create an account!</p>
+                        <p className="login-p">Click <a href="/register">Register</a> to create an account!</p>
                     </div>
                 </form>
             </div>
