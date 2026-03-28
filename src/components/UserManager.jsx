@@ -1,4 +1,5 @@
 import BackendConnector from "./BackendConnector";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function UserManager() {
 
@@ -8,7 +9,7 @@ export default function UserManager() {
             password: password
         }).then(response => {
             if (response.data.status == "success") {
-                console.log("Login");
+                toast.success("Logged in successfully");
             }
         });
     }
@@ -18,8 +19,10 @@ export default function UserManager() {
             name, email, role, password
         }).then(response => {
             if (response.data.status == "success") {
-                console.log("registered");
+                toast.success(response.data.message);
             }
+        }).catch(error => {
+            toast.error(error.response.data.message);
         });
     }
 

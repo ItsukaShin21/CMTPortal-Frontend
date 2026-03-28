@@ -1,36 +1,58 @@
 import "../css/RegisterPage.css"
 import ShowPassword1 from "../assets/images/ShowPassword1.png"
-import UserManager from "../components/UserManager";
+import UserManager from "../components/UserManager"
 import { useState } from "react"
+import toast, { Toaster } from "react-hot-toast"
 
 export default function RegisterPage() {
     const [seePassword, setSeePassword] = useState("password");
     const [seeConfirmPassword, setSeeConfirmPassword] = useState("password");
     const { userRegister } = UserManager();
-    const [loader, setLoader] = useState("REGISTER");
+    const [loader, setLoader] = useState("done");
     const [data, setData] = useState({
         name: "",
         email: "",
         role: "",
         password: "",
-        currentPassword: "",
+        confirmPassword: "",
     });
 
     const handleChange = ( event ) => {
-        setData(
-            [ event.target.name ] = event.target.value
-        );
+        setData({
+            ...data,
+            [ event.target.name ]: event.target.value
+        });
     }
 
     const handleRegister = ( event ) => {
         event.preventDefault();
-        setLoader("CREATING ACCOUNT...");
-        userRegister(data.name, data.email, data.role, data.password);
-        setLoader("REGISTER");
+        setLoader("waiting");
+        console.log(data);
+        if (data.password != data.confirmPassword) {
+            toast.error("Passwords do not match!");
+            setData({
+                password: "",
+                confirmPassword: "",
+            });
+        } else {
+            toast.promise(
+                userRegister(data.name, data.email, data.role, data.password), {
+                    loading: "Creating account.. Please wait!",
+                });
+            setData({
+                name: "",
+                email: "",
+                role: "",
+                password: "",
+                confirmPassword: "",
+            });
+        }
+        setLoader("done");
     }
 
     return (
         <div className="register-page-container d-flex justify-content-center align-items-center">
+            <Toaster />
             <div className="register-form-container d-flex justify-content-center">
                 <form onSubmit={ handleRegister }>
                     <div className="register-input-fields d-flex justify-content-evenly align-items-center flex-column">
@@ -38,12 +60,18 @@ export default function RegisterPage() {
                         <input type="text"
                                placeholder="Name"
                                name="name"
+                               value={ data.name }
+                               onChange={ handleChange }
                                required />
                         <input type="email"
                                placeholder="Email"
                                name="email"
+                               value={ data.email }
+                               onChange={ handleChange }
                                required />
-                        <select name="role">
+                        <select name="role" 
+                                onChange={ handleChange } 
+                                value={ data.role }>
                             <option value="" defaultValue>Select identity</option>
                             <option value="Teacher">Teacher</option>
                             <option value="Student">Student</option>
@@ -66,9 +94,9 @@ export default function RegisterPage() {
                         </div>
                         <div className="d-flex align-items-center position-relative">
                             <input type={ seeConfirmPassword } 
-                                   placeholder="Password" 
-                                   name="password"
-                                   value={ data.currentPassword }
+                                   placeholder="Confirm Password" 
+                                   name="confirmPassword"
+                                   value={ data.confirmPassword }
                                    onChange={ handleChange }
                                    autoComplete="off"
                                    required />
@@ -80,7 +108,9 @@ export default function RegisterPage() {
                                 <img src={ ShowPassword1 } width={ 20 }/>
                             </button>
                         </div>
-                        <button type="submit" className="login-button fw-bold">{ loader }</button>
+                        <button type="submit" className="login-button fw-bold" disabled={ loader === "waiting" }>
+                            REGISTER
+                        </button>
                         <p className="login-p">Click <a href="/">Login</a> if you have an account!</p>
                     </div>
                 </form>
