@@ -8,7 +8,7 @@
     background: #fff;
     width: 35vw;
     height: 70vh;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .login-label {
@@ -26,13 +26,13 @@
     background: #8494FF;
     color: #fff;
     border: none;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 10px;
     width: 25vw;
     font-size: 16px;
 }
 
 .login-input-fields input:nth-child(1) {
-    border-radius: 15px;
+    border-radius: 10px;
     width: 25vw;
 }
 
@@ -41,7 +41,7 @@
     padding: 5px;
     border: none;
     width: 3vw;
-    border-radius: 15px;
+    border-radius: 10px;
     right: 5px;
 }
 
@@ -50,7 +50,7 @@
     padding: 5px;
     border: none;
     width: 3vw;
-    border-radius: 15px;
+    border-radius: 10px;
     right: 5px;
 }
 
@@ -59,11 +59,15 @@
 }
 
 .login-button {
-    width: 15vw;
+    width: 10vw;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
     background: #6367FF;
+}
+
+.login-button:hover {
+    background: #3539ab;
 }
 
 .login-p {
