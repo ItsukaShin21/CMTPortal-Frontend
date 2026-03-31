@@ -61,7 +61,8 @@ export default function LoginPage() {
                                    autoComplete="off"
                                    required />
                             <button type="button" 
-                                    className={`position-absolute ${ seePassword === "password" ? "see-password":"see-password-active" }`}
+                                    className={`position-absolute 
+                                                ${ seePassword === "password" ? "login-see-password":"login-see-password-active" }`}
                                     onClick={() => {
                                         setSeePassword(seePassword === "password" ? "text":"password")
                                     }}>
@@ -69,7 +70,7 @@ export default function LoginPage() {
                             </button>
                         </div>
                         <button type="submit" className="login-button fw-bold">{ loader }</button>
-                        <p className="login-p">Click <a href="/register">Register</a> to create an account!</p>
+                        <p className="login-p">Click <a href="/register" className="fw-bold">Register</a> to create an account!</p>
                     </div>
                 </form>
             </div>

@@ -1,3 +1,12 @@
+/* Color pallete of the website */
+:root {
+  --bgcolor1: #04080F;
+  --bgcolor2: #507DBC;
+  --bgcolor3: #A1C6EA;
+  --bgcolor4: #BBD1EA;
+  --bgcolor5: #DAE3E5;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

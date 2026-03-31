@@ -1,11 +1,11 @@
 .login-page-container {
-    background: #6367FF;
+    background: var(--bgcolor1);
     height: 100vh;
     width: 100vw;
 }
 
 .login-form-container {
-    background: #fff;
+    background: var(--bgcolor5);
     width: 35vw;
     height: 70vh;
     border-radius: 10px;
@@ -23,8 +23,8 @@
 .login-input-fields input {
     font-size: 18px;
     padding: 10px 10px 10px 20px;
-    background: #8494FF;
-    color: #fff;
+    background: var(--bgcolor3);
+    color: #000;
     border: none;
     border-radius: 10px;
     width: 25vw;
@@ -36,8 +36,8 @@
     width: 25vw;
 }
 
-.see-password {
-    background: #8494FF;
+.login-see-password {
+    background: var(--bgcolor3);
     padding: 5px;
     border: none;
     width: 3vw;
@@ -45,8 +45,8 @@
     right: 5px;
 }
 
-.see-password-active {
-    background: #fff;
+.login-see-password-active {
+    background: var(--bgcolor2);
     padding: 5px;
     border: none;
     width: 3vw;
@@ -55,7 +55,7 @@
 }
 
 .see-password:hover {
-    background: #fff;
+    background: var(--bgcolor2);
 }
 
 .login-button {
@@ -63,11 +63,11 @@
     padding: 10px;
     border-radius: 10px;
     border: none;
-    background: #6367FF;
+    background: var(--bgcolor2);
 }
 
 .login-button:hover {
-    background: #3539ab;
+    background: var(--bgcolor4);
 }
 
 .login-p {

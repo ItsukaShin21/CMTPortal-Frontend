@@ -85,7 +85,8 @@ export default function RegisterPage() {
                                    autoComplete="off"
                                    required />
                             <button type="button" 
-                                    className={`position-absolute ${ seePassword === "password" ? "see-password":"see-password-active" }`}
+                                    className={`position-absolute 
+                                                ${ seePassword === "password" ? "register-see-password":"register-see-password-active" }`}
                                     onClick={() => {
                                         setSeePassword(seePassword === "password" ? "text":"password")
                                     }}>
@@ -101,17 +102,18 @@ export default function RegisterPage() {
                                    autoComplete="off"
                                    required />
                             <button type="button" 
-                                    className={`position-absolute ${ seeConfirmPassword === "password" ? "see-password":"see-password-active" }`}
+                                    className={`position-absolute 
+                                                ${ seeConfirmPassword === "password" ? "register-see-password":"register-see-password-active" }`}
                                     onClick={() => {
                                         setSeeConfirmPassword(seeConfirmPassword === "password" ? "text":"password")
                                     }}>
                                 <img src={ ShowPassword1 } width={ 20 }/>
                             </button>
                         </div>
-                        <button type="submit" className="login-button fw-bold" disabled={ loader === "waiting" }>
+                        <button type="submit" className="register-button fw-bold" disabled={ loader === "waiting" }>
                             REGISTER
                         </button>
-                        <p className="login-p">Click <a href="/">Login</a> if you have an account!</p>
+                        <p className="register-p">Click <a href="/" className="fw-bold">Login</a> if you have an account!</p>
                     </div>
                 </form>
             </div>
