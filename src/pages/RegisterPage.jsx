@@ -1,6 +1,7 @@
 import "../css/RegisterPage.css"
 import ShowPassword1 from "../assets/images/ShowPassword1.png"
 import UserManager from "../components/UserManager"
+import RegisterBg from "../assets/images/RegisterBackground.png"
 import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 
@@ -8,7 +9,7 @@ export default function RegisterPage() {
     const [seePassword, setSeePassword] = useState("password");
     const [seeConfirmPassword, setSeeConfirmPassword] = useState("password");
     const { userRegister } = UserManager();
-    const [loader, setLoader] = useState("done");
+    const [loader, setLoader] = useState("CREATE ACCOUNT");
     const [data, setData] = useState({
         name: "",
         email: "",
@@ -24,9 +25,9 @@ export default function RegisterPage() {
         });
     }
 
-    const handleRegister = ( event ) => {
+    const handleRegister = async ( event ) => {
         event.preventDefault();
-        setLoader("waiting");
+        setLoader("CREATING ACCOUNT");
         console.log(data);
         if (data.password != data.confirmPassword) {
             toast.error("Passwords do not match!");
@@ -34,9 +35,13 @@ export default function RegisterPage() {
                 password: "",
                 confirmPassword: "",
             });
-        } else {
+        }
+        else if (data.role === "") {
+            toast.error("Please choose your identity!");
+        }
+        else {
             toast.promise(
-                userRegister(data.name, data.email, data.role, data.password), {
+                await userRegister(data.name, data.email, data.role, data.password), {
                     loading: "Creating account.. Please wait!",
                 });
             setData({
@@ -47,76 +52,112 @@ export default function RegisterPage() {
                 confirmPassword: "",
             });
         }
-        setLoader("done");
+        setLoader("CREATE ACCOUNT");
     }
 
     return (
-        <div className="register-page-container d-flex justify-content-center align-items-center">
+        <div className="register-page-container d-flex align-items-center">
             <Toaster />
-            <div className="register-form-container d-flex justify-content-center">
+            <div className="page-description d-flex align-items-center">
+                <div className="page-description-content ms-5">
+                    <h2 className="text-white fw-bold">Join the</h2>
+                    <h2 className="fw-bold">CMT Request Portal</h2>
+                    <p className="text-white mt-4">
+                       Access the next generation of technical diagnostics and maintenance management. 
+                       Engineered for precision, built for reliability.
+                    </p>
+                </div>
+            </div>
+
+            <div className="register-form-container d-flex flex-column justify-content-center">
+                <p className="text-white">CREATE AN ACCOUNT</p>
+                <p className="text-white mb-5">Initialize your identity profile</p>
+
                 <form onSubmit={ handleRegister }>
-                    <div className="register-input-fields d-flex justify-content-evenly align-items-center flex-column">
-                        <p className="register-label fw-bold">REGISTER</p>
+                    <div className="name-input-container d-flex flex-column mb-3">
+                        <label>NAME</label>
                         <input type="text"
-                               placeholder="Name"
+                               placeholder="John Doe"
                                name="name"
                                value={ data.name }
                                onChange={ handleChange }
                                required />
+                    </div>
+
+                    <div className="email-input-container d-flex flex-column mb-3">
+                        <label>EMAIL</label>
                         <input type="email"
                                placeholder="Email"
                                name="email"
                                value={ data.email }
                                onChange={ handleChange }
                                required />
-                        <select name="role" 
-                                onChange={ handleChange } 
-                                value={ data.role }>
-                            <option value="" defaultValue>Select identity</option>
-                            <option value="Teacher">Teacher</option>
-                            <option value="Student">Student</option>
-                        </select>
-                        <div className="d-flex align-items-center position-relative">
+                    </div>
+
+                    <div className="role-input-container mb-3">
+                        <label>IDENTITY</label>
+                        <div className="role-options d-flex flex-row justify-content-evenly">
+                            <div className="d-flex align-items-center">
+                                <input type="radio"
+                                       name="role"
+                                       className="me-1"
+                                       value="Teacher"
+                                       onClick={ handleChange } />
+                                <label>TEACHER</label>
+                            </div>
+
+                            <div className="d-flex align-items-center">
+                                <input type="radio"
+                                       name="role"
+                                       className="me-1"
+                                       value="Student"
+                                       onClick={ handleChange } />
+                                <label>STUDENT</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="password-input-container d-flex flex-column mb-3">
+                        <label>PASSWORD</label>
+                        <div className="password-input d-flex align-items-center">
                             <input type={ seePassword } 
-                                   placeholder="Password" 
+                                   placeholder="********" 
                                    name="password"
+                                   className={`${ seePassword === "password" ? "register-show-password": "register-hide-password"}`}
                                    value={ data.password }
                                    onChange={ handleChange }
                                    autoComplete="off"
-                                   required />
-                            <button type="button" 
-                                    className={`position-absolute 
-                                                ${ seePassword === "password" ? "register-see-password":"register-see-password-active" }`}
-                                    onClick={() => {
-                                        setSeePassword(seePassword === "password" ? "text":"password")
-                                    }}>
-                                <img src={ ShowPassword1 } width={ 20 }/>
-                            </button>
-                        </div>
-                        <div className="d-flex align-items-center position-relative">
+                                   required />  
+                            <img src={ ShowPassword1 } width={ 30 }
+                                   onClick={() => setSeePassword(seePassword === "password" ? "text": "password")} />                     
+                        </div>                    
+                    </div>
+
+                    <div className="confirm-pass-container d-flex flex-column">
+                        <label>CONFIRM PASSWORD</label>
+                        <div className="password-input d-flex align-items-center">
                             <input type={ seeConfirmPassword } 
-                                   placeholder="Confirm Password" 
+                                   placeholder="********" 
                                    name="confirmPassword"
                                    value={ data.confirmPassword }
                                    onChange={ handleChange }
                                    autoComplete="off"
                                    required />
-                            <button type="button" 
-                                    className={`position-absolute 
-                                                ${ seeConfirmPassword === "password" ? "register-see-password":"register-see-password-active" }`}
-                                    onClick={() => {
-                                        setSeeConfirmPassword(seeConfirmPassword === "password" ? "text":"password")
-                                    }}>
-                                <img src={ ShowPassword1 } width={ 20 }/>
-                            </button>
+                            <img src={ ShowPassword1 } width={ 30 }
+                                   onClick={() => setSeeConfirmPassword(seeConfirmPassword === "password" ? "text": "password")} />  
                         </div>
-                        <button type="submit" className="register-button fw-bold" disabled={ loader === "waiting" }>
-                            REGISTER
-                        </button>
-                        <p className="register-p">Click <a href="/" className="fw-bold">Login</a> if you have an account!</p>
                     </div>
+
+                    <button type="submit"
+                            className="border-0 p-2 mt-5 register-button"
+                            disabled={ loader === "CREATING ACCOUNT" }>{ loader }</button>
+                    <div className="register-p mt-3 d-flex justify-content-center">
+                        <p className="text-white">Click <a href="/">Login</a> if you have an account!</p>
+                    </div>
+
                 </form>
             </div>
+
         </div>
     )
 }

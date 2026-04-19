@@ -1,0 +1,6 @@
+.dashboard-page-container {
+    background: var(--bgcolor1);
+    height: 100vh;
+    width: 100vw;
+}
+

@@ -1,37 +1,101 @@
 .register-page-container {
-    background: var(--bgcolor1);
+    background: var(--bgcolor4);
     height: 100vh;
     width: 100vw;
 }
 
-.register-form-container {
-    background: var(--bgcolor5);
-    width: 35vw;
-    height: 80vh;
-    border-radius: 15px;
+.page-description {
+    position: relative;
+    height: 100vh;
+    width: 65vw;
+    z-index: 1;
 }
 
-.register-label {
-    font-size: 36px;
+.page-description::before {
+    content: "";
+    position: absolute;
+    background-image: url("../assets/images/RegisterBackground.png");
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.1;
+}
+.page-description-content {
+    z-index: 1;
 }
 
-.register-form-container input, select {
-    font-size: 18px;
-    padding: 10px 10px 10px 20px;
-    background: var(--bgcolor3);
-    color: #000;
-    border: none;
-    border-radius: 15px 15px 15px 15px;
-    width: 25vw;
+
+.page-description-content h2 {
+    font-size: 52px;
+}
+
+.page-description-content h2:nth-child(2) {
+    background: linear-gradient( #507DBC 0% , #A1C6EA 100%);
+    background-clip: text !important;
+    color: transparent;
+}
+
+.page-description-content p {
     font-size: 16px;
+    width: 50%;
+    font-weight: 200;
 }
 
-.register-form-container select {
-    width: 25vw;
+.register-form-container {
+    height: 100vh;
+    width: 35vw;
+    padding-left: 5%;
 }
 
-.register-input-fields {
-    height: 100%;
+.register-form-container p:nth-child(1) {
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.register-form-container p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.name-input-container label, .email-input-container label,
+.role-input-container label, .password-input-container label {
+    color: var(--bgcolor2);
+    font-size: 14px;
+    margin-bottom: 1%;
+}
+
+.name-input-container input, .email-input-container input,
+.password-input-container input, .confirm-pass-container input {
+    width: 80%;
+    height: 16px;
+    font-size: 16px;
+    padding: 20px 20px 20px 10px;
+    background: #507DBC0D;
+    border: none;
+    border-bottom: #507DBC33 1px solid;
+    outline: none;
+}
+
+.role-options {
+    width: 80%;
+}
+
+.password-input-container input, .confirm-pass-container input {
+    width: 100% !important;
+}
+
+.password-input {
+    position: relative;
+    width: 80%;
+}
+
+.password-input img {
+    position: absolute;
+    cursor: pointer;
+    padding: 5px;
+    right: 10px;
 }
 
 .register-see-password {
@@ -57,17 +121,24 @@
 }
 
 .register-button {
-    width: 10vw;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    background: var(--bgcolor2);
+    background: linear-gradient(45deg, var(--bgcolor1) 0%, var(--bgcolor2) 100%);
+    font-size: 16px;
+    width: 80%;
 }
 
 .register-button:hover {
-    background: var(--bgcolor4);
+    background: var(--bgcolor1);
 }
 
-.register-p {
-    font-size: 14px;
+.register-p p {
+    font-size: 14px !important;
+    width: 80%;
+}
+
+.register-p a {
+    color: var(--bgcolor1);
+}
+
+.register-p a:hover {
+    color: var(--bgcolor2);
 }
